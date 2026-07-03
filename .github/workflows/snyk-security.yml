@@ -71,4 +71,4 @@ jobs:
         run: docker build -t node:18.13.0 . 
         # Runs Snyk Container (Container and SCA) analysis and uploads result to Snyk.
       - name: Snyk Container monitor
-        run: snyk container monitor --file=Dockerfile --org=377e1964-708f-4b3e-85db-d1b43d261179
+        run: snyk container monitor node:18.13.0 --file=Dockerfile --org=377e1964-708f-4b3e-85db-d1b43d261179

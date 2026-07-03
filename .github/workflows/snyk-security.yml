@@ -51,14 +51,17 @@ jobs:
           # This is where you will need to introduce the Snyk API token created with your Snyk account
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
+      - name: Snyk Auth
+        run: snyk auth --auth-type=token $SNYK_TOKEN
+
         # Runs Snyk Code (SAST) analysis and uploads result into GitHub.
         # Use || true to not fail the pipeline
       - name: Snyk Code test
-        run: snyk code test --sarif > snyk-code.sarif # || true
+        run: snyk code test --org
 
         # Runs Snyk Open Source (SCA) analysis and uploads result to Snyk.
       - name: Snyk Open Source monitor
-        run: snyk monitor --all-projects
+        run: snyk monitor --all-projects --org=377e1964-708f-4b3e-85db-d1b43d261179
 
         # Runs Snyk Infrastructure as Code (IaC) analysis and uploads result to Snyk.
         # Use || true to not fail the pipeline.

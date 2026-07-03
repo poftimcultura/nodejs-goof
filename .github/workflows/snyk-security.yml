@@ -48,6 +48,7 @@ jobs:
         #    node-version: 20
 
         env:
+          environment: snyk
           # This is where you will need to introduce the Snyk API token created with your Snyk account
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
